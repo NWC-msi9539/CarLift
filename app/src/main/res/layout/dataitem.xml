@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="#E3E3E3"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/Data_upBTN"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:background="@android:drawable/ic_media_play"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:rotation="270"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#29000000"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Data_TypeTXT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="미세먼지"
+                    android:textAlignment="center"
+                    android:textColor="#80000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="#29000000" />
+
+                <TextView
+                    android:id="@+id/Data_valuesTXT"
+                    android:layout_width="match_parent"
+                    android:layout_height="44sp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/notosanskr_light"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:text="100 ㎍/㎥"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="27sp"
+                    app:autoSizeTextType="none" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#29000000"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
+
+            <Button
+                android:id="@+id/Data_downBTN"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:background="@android:drawable/ic_media_play"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:rotation="90"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

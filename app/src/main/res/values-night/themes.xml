@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.CarLift" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/end</item>
+        <item name="colorPrimaryVariant">#BF268AFF</item>
+        <item name="colorOnPrimary">#80268AFF</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/start</item>
+        <item name="colorSecondaryVariant">#BF08FF8A</item>
+        <item name="colorOnSecondary">#8008FF8A</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">#80268AFF</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
