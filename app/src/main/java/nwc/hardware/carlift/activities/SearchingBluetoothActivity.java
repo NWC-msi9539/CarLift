@@ -346,7 +346,7 @@ public class SearchingBluetoothActivity extends AppCompatActivity {
                     @SuppressLint("MissingPermission")
                     @Override
                     public void run() {
-                        bluetoothGeneralTool.setMAIN(1, -1);
+                        bluetoothGeneralTool.setMAIN(14, -1);
                         adapter.resetItem();
                         BluetoothDevice device = bluetoothGeneralTool.getGatt().getDevice();
                         connectedDeviceInfo.setVisibility(View.VISIBLE);
@@ -378,7 +378,13 @@ public class SearchingBluetoothActivity extends AppCompatActivity {
             }
         });
             if (bluetoothGeneralTool.getGatt() == null) {
-                bluetoothPermissionTool.checkPermission();
+                if(bluetoothPermissionTool.checkPermission()){
+                    isPermission = true;
+                    Log.d("TESTING", "Permission ON");
+                    connectedDeviceInfo.setVisibility(View.GONE);
+                    bluetoothSearchingTool.startScan(SearchingBluetoothActivity.this);
+                    timer.schedule(timerTask, 0, 100);
+                }
             } else {
                 statusText.setText("Connected");
                 progressBar.setVisibility(View.GONE);

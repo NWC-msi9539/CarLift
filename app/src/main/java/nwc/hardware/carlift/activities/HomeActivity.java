@@ -47,13 +47,13 @@ public class HomeActivity extends AppCompatActivity {
     private static ConstraintLayout progressLayout;
     private static TextView progressMsg;
 
-    private ConstraintLayout terminalLayout;
-
     public static boolean isConnect = true;
 
     /**
      * 터미널 데이터
     **/
+    public static ConstraintLayout terminalLayout;
+
     private EditText terminal_dataField;
     private Button terminal_sendBTN;
     private ImageButton terminal_deleteBTN;

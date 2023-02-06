@@ -88,22 +88,22 @@ public class Data {
             case TYPE_FL_OFFSET_VALUE:
                 minValue = 0;
                 value = minValue;
-                maxValue = 10;
+                maxValue = 9;
                 break;
             case TYPE_FR_OFFSET_VALUE:
                 minValue = 0;
                 value = minValue;
-                maxValue = 10;
+                maxValue = 9;
                 break;
             case TYPE_RL_OFFSET_VALUE:
                 minValue = 0;
                 value = minValue;
-                maxValue = 10;
+                maxValue = 9;
                 break;
             case TYPE_RR_OFFSET_VALUE:
                 minValue = 0;
                 value = minValue;
-                maxValue = 10;
+                maxValue = 9;
                 break;
             case TYPE_BOTTOM_SET_VALUE:
                 minValue = 0;
@@ -113,7 +113,7 @@ public class Data {
             case TYPE_SPOILER_VALUE:
                 minValue = 1;
                 value = minValue;
-                maxValue = 10;
+                maxValue = 9;
                 break;
             default:
                 this.type = -1;

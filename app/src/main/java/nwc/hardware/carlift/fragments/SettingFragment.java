@@ -110,6 +110,7 @@ public class SettingFragment extends Fragment {
                 for(byte b : datas){
                     s += (char)b;
                 }
+                Log.d(TAG, "DATA ==> " + s);
                 if(datas[0] == 'P'){
                     switch (datas[1]){
                         case '1':
@@ -207,7 +208,14 @@ public class SettingFragment extends Fragment {
 
                             rl_offset_value += Float.parseFloat(String.valueOf((char)datas[2]));
                             rr_offset_value += Float.parseFloat(String.valueOf((char)datas[3]));
-                            bottom_set_value += Float.parseFloat(String.valueOf((char)datas[4]));
+                            for(int i=4; i<6; i++){
+                                int disc = 1;
+                                for(int j=0; j<(i-2); j++){
+                                    disc *= 10;
+                                }
+                                disc = 10 / disc;
+                                bottom_set_value +=  Float.parseFloat(String.valueOf((char)datas[i])) * disc;
+                            }
                             spoiler_value += Float.parseFloat(String.valueOf((char)datas[5]));
 
                             dataList.get(13).setValue(rl_offset_value);
@@ -334,8 +342,9 @@ public class SettingFragment extends Fragment {
                 }else if(index == 4){
                     builder.append('W').append('P').append(index)
                             .append((int)dataList.get(count++).getValue())
-                            .append((int)dataList.get(count++).getValue())
-                            .append((int)dataList.get(count++).getValue())
+                            .append((int)dataList.get(count++).getValue());
+                    String temp = String.format("%02d", (int)dataList.get(count++).getValue());
+                    builder.append(temp)
                             .append((int)dataList.get(count++).getValue())
                             .append('0')
                             .append('E').append((char)0x0d).append((char)0x0a);

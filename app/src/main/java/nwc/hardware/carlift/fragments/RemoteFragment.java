@@ -80,26 +80,26 @@ public class RemoteFragment extends Fragment {
                     if(status == stop){
                         status = release;
                         bluetoothGeneralTool.Write(LIFT_STOP);
-                        Thread.sleep(50);
+                        Thread.sleep(200);
                     }
                     if(status == up){
                         bluetoothGeneralTool.Write(LIFT_UP);
-                        Thread.sleep(50);
+                        Thread.sleep(200);
                     }
                     if(status == down){
                         bluetoothGeneralTool.Write(LIFT_DOWN);
-                        Thread.sleep(50);
+                        Thread.sleep(200);
                     }
                     if(status == lock){
                         bluetoothGeneralTool.Write(LIFT_LOCK);
-                        Thread.sleep(50);
+                        Thread.sleep(200);
                     }
                     bluetoothGeneralTool.Write(READ_SENSOR1);
-                    Thread.sleep(50);
+                    Thread.sleep(200);
                     bluetoothGeneralTool.Write(READ_SENSOR2);
-                    Thread.sleep(50);
+                    Thread.sleep(200);
                     bluetoothGeneralTool.Write(READ_SENSOR3);
-                    Thread.sleep(50);
+                    Thread.sleep(200);
                     bluetoothGeneralTool.Write(READ_SENSOR4);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -151,11 +151,12 @@ public class RemoteFragment extends Fragment {
                         for(byte b : datas){
                             s += (char)b;
                         }
-
-                        HomeActivity.terminal_logField.setText(HomeActivity.terminal_logField.getText() +
-                                "\bReceive Data\b --------------------------\n" +
-                                s +
-                                "\n");
+                        if(HomeActivity.terminalLayout.getVisibility() == View.VISIBLE) {
+                            HomeActivity.terminal_logField.setText(HomeActivity.terminal_logField.getText() +
+                                    "\bReceive Data\b --------------------------\n" +
+                                    s +
+                                    "\n");
+                        }
                     }
                 });
             }
@@ -333,7 +334,7 @@ public class RemoteFragment extends Fragment {
             }
         });
 
-        timer.schedule(timerTask, 0, 350);
+        timer.schedule(timerTask, 0, 1000);
 
         return v;
     }

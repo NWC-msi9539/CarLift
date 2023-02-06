@@ -94,7 +94,7 @@ public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.MyView
                         valueText.setText("Disable");
                         break;
                     default:
-                        valueText.setText(String.format("%.1f", value));
+                        valueText.setText("" + (int)value);
                         break;
                 }
                 break;
@@ -113,8 +113,47 @@ public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.MyView
                         break;
                 }
                 break;
-            default:
+            case Data.TYPE_ANGLE_SENSOR:
+                switch ((int) value){
+                    case 0:
+                        valueText.setText("OFF");
+                        break;
+                    case 1:
+                        valueText.setText("ON");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case Data.TYPE_PHOTO_SENSOR:
+                switch ((int)value){
+                    case 0:
+                        valueText.setText("OFF");
+                        break;
+                    case 1:
+                        valueText.setText("ON");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case Data.TYPE_LOCK_SENSOR:
+                switch ((int)value){
+                    case 0:
+                        valueText.setText("OFF");
+                        break;
+                    case 1:
+                        valueText.setText("ON");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case Data.TYPE_SENSOR_LIMIT:
                 valueText.setText(String.format("%.1f", value));
+                break;
+            default:
+                valueText.setText("" + (int)value);
                 break;
         }
     }
