@@ -74,6 +74,7 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:text="single"
                 android:textColor="@color/white"
+                android:visibility="gone"
                 app:rippleColor="#346E9E"
                 app:strokeColor="#40000000"
                 app:strokeWidth="1dp" />
@@ -89,6 +90,7 @@
                 android:fontFamily="@font/notosanskr_medium"
                 android:text="AUTO"
                 android:textColor="@color/white"
+                android:visibility="gone"
                 app:rippleColor="#346E9E"
                 app:strokeColor="#40000000"
                 app:strokeWidth="1dp" />
