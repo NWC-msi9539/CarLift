@@ -210,14 +210,15 @@ public class SettingFragment extends Fragment {
                             rr_offset_value += Float.parseFloat(String.valueOf((char)datas[3]));
                             for(int i=4; i<6; i++){
                                 int disc = 1;
-                                for(int j=0; j<(i-2); j++){
+                                for(int j=0; j<(i-4); j++){
                                     disc *= 10;
                                 }
                                 disc = 10 / disc;
                                 bottom_set_value +=  Float.parseFloat(String.valueOf((char)datas[i])) * disc;
                             }
-                            spoiler_value += Float.parseFloat(String.valueOf((char)datas[5]));
-
+                            Log.d(TAG, "BOTTOM --> " + bottom_set_value);
+                            spoiler_value += Float.parseFloat(String.valueOf((char)datas[6]));
+                            Log.d(TAG,"SPOILER --> " + spoiler_value);
                             dataList.get(13).setValue(rl_offset_value);
                             dataList.get(14).setValue(rr_offset_value);
                             dataList.get(15).setValue(bottom_set_value);
@@ -227,6 +228,7 @@ public class SettingFragment extends Fragment {
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
+                                    adapter.updateItem();
                                     dataField.setVisibility(View.VISIBLE);
                                     notice.setVisibility(View.GONE);
                                     writeBTN.setEnabled(true);

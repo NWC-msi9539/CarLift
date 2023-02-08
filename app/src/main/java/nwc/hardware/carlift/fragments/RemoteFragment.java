@@ -81,6 +81,8 @@ public class RemoteFragment extends Fragment {
                         status = release;
                         bluetoothGeneralTool.Write(LIFT_STOP);
                         Thread.sleep(200);
+                    }else{
+                        Thread.sleep(200);
                     }
                     if(status == up){
                         bluetoothGeneralTool.Write(LIFT_UP);
@@ -95,11 +97,29 @@ public class RemoteFragment extends Fragment {
                         Thread.sleep(200);
                     }
                     bluetoothGeneralTool.Write(READ_SENSOR1);
-                    Thread.sleep(200);
+                    if(status == stop){
+                        status = release;
+                        bluetoothGeneralTool.Write(LIFT_STOP);
+                        Thread.sleep(200);
+                    }else{
+                        Thread.sleep(200);
+                    }
                     bluetoothGeneralTool.Write(READ_SENSOR2);
-                    Thread.sleep(200);
+                    if(status == stop){
+                        status = release;
+                        bluetoothGeneralTool.Write(LIFT_STOP);
+                        Thread.sleep(200);
+                    }else{
+                        Thread.sleep(200);
+                    }
                     bluetoothGeneralTool.Write(READ_SENSOR3);
-                    Thread.sleep(200);
+                    if(status == stop){
+                        status = release;
+                        bluetoothGeneralTool.Write(LIFT_STOP);
+                        Thread.sleep(200);
+                    }else{
+                        Thread.sleep(200);
+                    }
                     bluetoothGeneralTool.Write(READ_SENSOR4);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -142,23 +162,24 @@ public class RemoteFragment extends Fragment {
 
             @Override
             public void characteristicWrite(BluetoothGatt bluetoothGatt, BluetoothGattCharacteristic bluetoothGattCharacteristic, int i) {
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        byte[] datas = bluetoothGattCharacteristic.getValue();
-                        String s = "";
-                        for(byte b : datas){
-                            s += (char)b;
+                if(HomeActivity.terminalLayout.getVisibility() == View.VISIBLE) {
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            byte[] datas = bluetoothGattCharacteristic.getValue();
+                            String s = "";
+                            for(byte b : datas){
+                                s += (char)b;
+                            }
+                                HomeActivity.terminal_logField.setText(HomeActivity.terminal_logField.getText() +
+                                        "\bReceive Data\b --------------------------\n" +
+                                        s +
+                                        "\n");
+
                         }
-                        if(HomeActivity.terminalLayout.getVisibility() == View.VISIBLE) {
-                            HomeActivity.terminal_logField.setText(HomeActivity.terminal_logField.getText() +
-                                    "\bReceive Data\b --------------------------\n" +
-                                    s +
-                                    "\n");
-                        }
-                    }
-                });
+                    });
+                }
             }
 
             @Override
@@ -254,22 +275,25 @@ public class RemoteFragment extends Fragment {
                     }
                 }
                 Log.d(TAG,"Read Data -> " + s);
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        byte[] datas = bluetoothGattCharacteristic.getValue();
-                        String s = "";
-                        for(byte b : datas){
-                            s += (char)b;
-                        }
 
-                        HomeActivity.terminal_logField.setText(HomeActivity.terminal_logField.getText() +
-                                "\bReceive Data\b --------------------------\n" +
-                                s +
-                                "\n");
-                    }
-                });
+                if(HomeActivity.terminalLayout.getVisibility() == View.VISIBLE) {
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            byte[] datas = bluetoothGattCharacteristic.getValue();
+                            String s = "";
+                            for(byte b : datas){
+                                s += (char)b;
+                            }
+                                HomeActivity.terminal_logField.setText(HomeActivity.terminal_logField.getText() +
+                                        "\bReceive Data\b --------------------------\n" +
+                                        s +
+                                        "\n");
+
+                        }
+                    });
+                }
             }
 
             @Override
