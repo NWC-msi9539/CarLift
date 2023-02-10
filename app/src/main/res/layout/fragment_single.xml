@@ -4,29 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.RemoteFragment">
+    tools:context=".fragments.SingleFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_weight="2"
                 app:cardBackgroundColor="#E1F5FE"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
@@ -35,7 +35,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -48,7 +47,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/FL_sensor"
+                        android:id="@+id/Single_FL_Sensor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="18.0"
@@ -57,21 +56,48 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/FL_lock"
+                        android:id="@+id/Single_FL_Lock"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textAlignment="center"
                         android:textColor="#000000"
                         android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/Single_FL_UpBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_margin="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:rotation="270"
+                        android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/Single_FL_DownBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_margin="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:rotation="90"
+                        android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_weight="2"
                 app:cardBackgroundColor="#E1F5FE"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
@@ -80,7 +106,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -93,7 +118,7 @@
 
                     <TextView
 
-                        android:id="@+id/RL_sensor"
+                        android:id="@+id/Single_RL_Sensor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="18.0"
@@ -102,84 +127,61 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/RL_lock"
+                        android:id="@+id/Single_RL_Lock"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textAlignment="center"
                         android:textColor="#000000"
                         android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/Single_RL_UpBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_margin="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:rotation="270"
+                        android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/Single_RL_DownBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_margin="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:rotation="90"
+                        android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/Remote_upBTN"
-                android:layout_width="108dp"
-                android:layout_height="108dp"
-                android:fontFamily="@font/notosanskr_bold"
-                android:text="UP"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/Remote_lockBTN"
-                android:layout_width="108dp"
-                android:layout_height="108dp"
-                android:fontFamily="@font/notosanskr_bold"
-                android:text="LOCK"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/Remote_downBTN"
-                android:layout_width="108dp"
-                android:layout_height="108dp"
-                android:fontFamily="@font/notosanskr_bold"
-                android:text="DOWN"
-                android:textColor="#FFF7F7"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_weight="2"
                 app:cardBackgroundColor="#E1F5FE"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
@@ -188,7 +190,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -201,7 +202,7 @@
 
                     <TextView
 
-                        android:id="@+id/FR_sensor"
+                        android:id="@+id/Single_FR_Sensor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="18.0"
@@ -210,21 +211,48 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/FR_lock"
+                        android:id="@+id/Single_FR_Lock"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textAlignment="center"
                         android:textColor="#000000"
                         android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/Single_FR_UpBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_margin="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:rotation="270"
+                        android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/Single_FR_DownBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_margin="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:rotation="90"
+                        android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_weight="2"
                 app:cardBackgroundColor="#E1F5FE"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
@@ -233,7 +261,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -246,7 +273,7 @@
 
                     <TextView
 
-                        android:id="@+id/RR_sensor"
+                        android:id="@+id/Single_RR_Sensor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="18.0"
@@ -255,21 +282,46 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/RR_lock"
+                        android:id="@+id/Single_RR_Lock"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textAlignment="center"
                         android:textColor="#000000"
                         android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/Single_RR_UpBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_margin="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:rotation="270"
+                        android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/Single_RR_DownBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_margin="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:rotation="90"
+                        android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
         </LinearLayout>
+
     </LinearLayout>
+
 </FrameLayout>

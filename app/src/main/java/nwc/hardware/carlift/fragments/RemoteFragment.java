@@ -81,8 +81,6 @@ public class RemoteFragment extends Fragment {
                         status = release;
                         bluetoothGeneralTool.Write(LIFT_STOP);
                         Thread.sleep(200);
-                    }else{
-                        Thread.sleep(200);
                     }
                     if(status == up){
                         bluetoothGeneralTool.Write(LIFT_UP);
@@ -97,30 +95,28 @@ public class RemoteFragment extends Fragment {
                         Thread.sleep(200);
                     }
                     bluetoothGeneralTool.Write(READ_SENSOR1);
+                    Thread.sleep(200);
                     if(status == stop){
                         status = release;
                         bluetoothGeneralTool.Write(LIFT_STOP);
-                        Thread.sleep(200);
-                    }else{
                         Thread.sleep(200);
                     }
                     bluetoothGeneralTool.Write(READ_SENSOR2);
+                    Thread.sleep(200);
                     if(status == stop){
                         status = release;
                         bluetoothGeneralTool.Write(LIFT_STOP);
-                        Thread.sleep(200);
-                    }else{
                         Thread.sleep(200);
                     }
                     bluetoothGeneralTool.Write(READ_SENSOR3);
+                    Thread.sleep(200);
                     if(status == stop){
                         status = release;
                         bluetoothGeneralTool.Write(LIFT_STOP);
                         Thread.sleep(200);
-                    }else{
-                        Thread.sleep(200);
                     }
                     bluetoothGeneralTool.Write(READ_SENSOR4);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

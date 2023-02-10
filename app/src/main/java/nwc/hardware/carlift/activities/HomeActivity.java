@@ -31,17 +31,23 @@ import nwc.hardware.Interfaces.OnGattListener;
 import nwc.hardware.bletool.BluetoothGeneralTool;
 import nwc.hardware.bletool.BluetoothSearchingTool;
 import nwc.hardware.carlift.R;
+import nwc.hardware.carlift.fragments.AutoFragment;
 import nwc.hardware.carlift.fragments.RemoteFragment;
 import nwc.hardware.carlift.fragments.SettingFragment;
+import nwc.hardware.carlift.fragments.SingleFragment;
 
 public class HomeActivity extends AppCompatActivity {
     private final String TAG = "HomeActivity";
 
     private SettingFragment settingFragment = new SettingFragment();
     private RemoteFragment remoteFragment = new RemoteFragment();
+    private SingleFragment singleFragment = new SingleFragment();
+    private AutoFragment autoFragment = new AutoFragment();
 
-    private Button settingBTN;
-    private Button remoteBTN;
+    private ImageButton settingBTN;
+    private ImageButton remoteBTN;
+    private ImageButton independent_BTN;
+    private ImageButton auto_BTN;
     private BluetoothGeneralTool bluetoothGeneralTool;
 
     private static ConstraintLayout progressLayout;
@@ -134,6 +140,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 settingBTN.setBackgroundColor(Color.parseColor("#346E9E"));
                 remoteBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                independent_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                auto_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
                 changeFragment(0);
             }
         });
@@ -151,7 +159,33 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 remoteBTN.setBackgroundColor(Color.parseColor("#346E9E"));
                 settingBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                independent_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                auto_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
                 changeFragment(1);
+            }
+        });
+
+        independent_BTN = findViewById(R.id.single_BTN);
+        independent_BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                independent_BTN.setBackgroundColor(Color.parseColor("#346E9E"));
+                remoteBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                settingBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                auto_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                changeFragment(2);
+            }
+        });
+
+        auto_BTN = findViewById(R.id.auto_BTN);
+        auto_BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auto_BTN.setBackgroundColor(Color.parseColor("#346E9E"));
+                independent_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                remoteBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                settingBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                changeFragment(3);
             }
         });
 
@@ -167,6 +201,12 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case 1:
                 getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.homeFrame, remoteFragment).commitAllowingStateLoss();
+                break;
+            case 2:
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.homeFrame, singleFragment).commitAllowingStateLoss();
+                break;
+            case 3:
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.homeFrame, autoFragment).commitAllowingStateLoss();
                 break;
             default:
                 break;
