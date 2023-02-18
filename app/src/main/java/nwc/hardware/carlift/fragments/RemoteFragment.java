@@ -2,6 +2,7 @@ package nwc.hardware.carlift.fragments;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -55,9 +57,9 @@ public class RemoteFragment extends Fragment {
     private TextView rr_sensor;
     private TextView rr_lockTXT;
 
-    private Button LIFT_upBTN;
-    private Button LIFT_lockBTN;
-    private Button LIFT_downBTN;
+    private ImageButton LIFT_upBTN;
+    private ImageButton LIFT_lockBTN;
+    private ImageButton LIFT_downBTN;
 
     private BluetoothGeneralTool bluetoothGeneralTool;
 
@@ -66,11 +68,25 @@ public class RemoteFragment extends Fragment {
     private Timer timer;
     private TimerTask timerTask;
 
+    private Drawable upBTN_Enable;
+    private Drawable upBTN_Disable;
+    private Drawable downBTN_Enable;
+    private Drawable downBTN_Disable;
+    private Drawable lockBTN_Enable;
+    private Drawable lockBTN_Disable;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_remote, container, false);
+
+        upBTN_Enable = getContext().getDrawable(R.drawable.remote_upbutton_2);
+        upBTN_Disable = getContext().getDrawable(R.drawable.remote_upbutton_1);
+        downBTN_Enable = getContext().getDrawable(R.drawable.remote_downbutton_2);
+        downBTN_Disable = getContext().getDrawable(R.drawable.remote_downbutton_1);
+        lockBTN_Enable = getContext().getDrawable(R.drawable.remote_lockbutton_2);
+        lockBTN_Disable = getContext().getDrawable(R.drawable.remote_lockbutton_1);
 
         timer = new Timer();
         timerTask = new TimerTask() {
@@ -304,11 +320,15 @@ public class RemoteFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "EVENT --> DOWN");
-                        status = up;
+                        if(status == release) {
+                            Log.d(TAG, "EVENT --> DOWN");
+                            LIFT_upBTN.setImageDrawable(upBTN_Enable);
+                            status = up;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
                         Log.d(TAG, "EVENT --> UP");
+                        LIFT_upBTN.setImageDrawable(upBTN_Disable);
                         status = stop;
                         break;
                 }
@@ -323,11 +343,15 @@ public class RemoteFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "EVENT --> DOWN");
-                        status = lock;
+                        if(status == release) {
+                            Log.d(TAG, "EVENT --> DOWN");
+                            LIFT_lockBTN.setImageDrawable(lockBTN_Enable);
+                            status = lock;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
                         Log.d(TAG, "EVENT --> UP");
+                        LIFT_lockBTN.setImageDrawable(lockBTN_Disable);
                         status = stop;
                         break;
                 }
@@ -342,11 +366,15 @@ public class RemoteFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "EVENT --> DOWN");
-                        status = down;
+                        if(status == release) {
+                            Log.d(TAG, "EVENT --> DOWN");
+                            LIFT_downBTN.setImageDrawable(downBTN_Enable);
+                            status = down;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
                         Log.d(TAG, "EVENT --> UP");
+                        LIFT_downBTN.setImageDrawable(downBTN_Disable);
                         status = stop;
                         break;
                 }

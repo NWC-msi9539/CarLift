@@ -11,6 +11,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -39,6 +40,15 @@ import nwc.hardware.carlift.fragments.SingleFragment;
 public class HomeActivity extends AppCompatActivity {
     private final String TAG = "HomeActivity";
 
+    private Drawable settingIMG_Enable;
+    private Drawable settingIMG_disable;
+    private Drawable remoteIMG_Enable;
+    private Drawable remoteIMG_disable;
+    private Drawable singleIMG_Enable;
+    private Drawable singleIMG_disable;
+    private Drawable autoIMG_Enable;
+    private Drawable autoIMG_disable;
+
     private SettingFragment settingFragment = new SettingFragment();
     private RemoteFragment remoteFragment = new RemoteFragment();
     private SingleFragment singleFragment = new SingleFragment();
@@ -49,6 +59,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton independent_BTN;
     private ImageButton auto_BTN;
     private BluetoothGeneralTool bluetoothGeneralTool;
+    private TextView titleTXT;
 
     private static ConstraintLayout progressLayout;
     private static TextView progressMsg;
@@ -125,6 +136,8 @@ public class HomeActivity extends AppCompatActivity {
 
         terminalSet();
 
+        titleTXT = findViewById(R.id.titleTXT);
+
         progressLayout = findViewById(R.id.progressLayout);
         progressMsg = findViewById(R.id.progressMsg);
         progressLayout.setOnTouchListener(new View.OnTouchListener() {
@@ -138,10 +151,11 @@ public class HomeActivity extends AppCompatActivity {
         settingBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                settingBTN.setBackgroundColor(Color.parseColor("#346E9E"));
-                remoteBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
-                independent_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
-                auto_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                titleTXT.setText("VALUES SETTING");
+                settingBTN.setImageDrawable(settingIMG_Enable);
+                remoteBTN.setImageDrawable(remoteIMG_disable);
+                independent_BTN.setImageDrawable(singleIMG_disable);
+                auto_BTN.setImageDrawable(autoIMG_disable);
                 changeFragment(0);
             }
         });
@@ -157,10 +171,11 @@ public class HomeActivity extends AppCompatActivity {
         remoteBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                remoteBTN.setBackgroundColor(Color.parseColor("#346E9E"));
-                settingBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
-                independent_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
-                auto_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                titleTXT.setText("REMOTE CONTROL");
+                settingBTN.setImageDrawable(settingIMG_disable);
+                remoteBTN.setImageDrawable(remoteIMG_Enable);
+                independent_BTN.setImageDrawable(singleIMG_disable);
+                auto_BTN.setImageDrawable(autoIMG_disable);
                 changeFragment(1);
             }
         });
@@ -169,10 +184,11 @@ public class HomeActivity extends AppCompatActivity {
         independent_BTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                independent_BTN.setBackgroundColor(Color.parseColor("#346E9E"));
-                remoteBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
-                settingBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
-                auto_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                titleTXT.setText("INDIVIDUAL CONTROL");
+                settingBTN.setImageDrawable(settingIMG_disable);
+                remoteBTN.setImageDrawable(remoteIMG_disable);
+                independent_BTN.setImageDrawable(singleIMG_Enable);
+                auto_BTN.setImageDrawable(autoIMG_disable);
                 changeFragment(2);
             }
         });
@@ -181,13 +197,23 @@ public class HomeActivity extends AppCompatActivity {
         auto_BTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                auto_BTN.setBackgroundColor(Color.parseColor("#346E9E"));
-                independent_BTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
-                remoteBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
-                settingBTN.setBackgroundColor(Color.parseColor("#FF268AFF"));
+                titleTXT.setText("AUTO POSITION");
+                settingBTN.setImageDrawable(settingIMG_disable);
+                remoteBTN.setImageDrawable(remoteIMG_disable);
+                independent_BTN.setImageDrawable(singleIMG_disable);
+                auto_BTN.setImageDrawable(autoIMG_Enable);
                 changeFragment(3);
             }
         });
+
+        settingIMG_Enable = getDrawable(R.drawable.b_value_button_2);
+        settingIMG_disable = getDrawable(R.drawable.b_value_button_1);
+        remoteIMG_Enable = getDrawable(R.drawable.b_remote_button_2);
+        remoteIMG_disable = getDrawable(R.drawable.b_remote_button_1);
+        singleIMG_Enable = getDrawable(R.drawable.b_indivisual_button_2);
+        singleIMG_disable = getDrawable(R.drawable.b_indivisual_button_1);
+        autoIMG_Enable = getDrawable(R.drawable.b_auto_button_2);
+        autoIMG_disable = getDrawable(R.drawable.b_auto_button_1);
 
         settingBTN.callOnClick();
 

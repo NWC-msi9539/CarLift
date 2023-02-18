@@ -2,6 +2,7 @@ package nwc.hardware.carlift.fragments;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -85,11 +86,21 @@ public class SingleFragment extends Fragment {
 
     private BluetoothGeneralTool bluetoothGeneralTool;
 
+    private Drawable downBTN_Enable;
+    private Drawable downBTN_Disable;
+    private Drawable upBTN_Enable;
+    private Drawable upBTN_Disable;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_single, container, false);
+
+        upBTN_Enable = getContext().getDrawable(R.drawable.value_upbutton_2);
+        upBTN_Disable = getContext().getDrawable(R.drawable.value_upbutton_1);
+        downBTN_Enable = getContext().getDrawable(R.drawable.value_downbutton_2);
+        downBTN_Disable = getContext().getDrawable(R.drawable.value_downbutton_1);
 
         SetTimer();
         SetGattListener();
@@ -112,11 +123,15 @@ public class SingleFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "FL_UpBTN DOWN!!!");
-                        Target = FL;
-                        status = up;
+                        if(status == release) {
+                            Log.d(TAG, "FL_UpBTN DOWN!!!");
+                            FL_UpBTN.setImageDrawable(upBTN_Enable);
+                            Target = FL;
+                            status = up;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        FL_UpBTN.setImageDrawable(upBTN_Disable);
                         status = stop;
                         break;
                 }
@@ -130,11 +145,15 @@ public class SingleFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "FL_DownBTN DOWN!!!");
-                        Target = FL;
-                        status = down;
+                        if(status == release) {
+                            Log.d(TAG, "FL_DownBTN DOWN!!!");
+                            FL_DownBTN.setImageDrawable(downBTN_Enable);
+                            Target = FL;
+                            status = down;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        FL_DownBTN.setImageDrawable(downBTN_Disable);
                         status = stop;
                         break;
                 }
@@ -149,11 +168,15 @@ public class SingleFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "FR_UpBTN DOWN!!!");
-                        Target = FR;
-                        status = up;
+                        if(status == release) {
+                            Log.d(TAG, "FR_UpBTN DOWN!!!");
+                            FR_UpBTN.setImageDrawable(upBTN_Enable);
+                            Target = FR;
+                            status = up;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        FR_UpBTN.setImageDrawable(upBTN_Disable);
                         status = stop;
                         break;
                 }
@@ -167,11 +190,15 @@ public class SingleFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "FR_DownBTN DOWN!!!");
-                        Target = FR;
-                        status = down;
+                        if(status == release) {
+                            Log.d(TAG, "FR_DownBTN DOWN!!!");
+                            FR_DownBTN.setImageDrawable(downBTN_Enable);
+                            Target = FR;
+                            status = down;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        FR_DownBTN.setImageDrawable(downBTN_Disable);
                         status = stop;
                         break;
                 }
@@ -186,11 +213,15 @@ public class SingleFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "RL_UpBTN DOWN!!!");
-                        Target = RL;
-                        status = up;
+                        if(status == release) {
+                            Log.d(TAG, "RL_UpBTN DOWN!!!");
+                            RL_UpBTN.setImageDrawable(upBTN_Enable);
+                            Target = RL;
+                            status = up;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        RL_UpBTN.setImageDrawable(upBTN_Disable);
                         status = stop;
                         break;
                 }
@@ -204,11 +235,15 @@ public class SingleFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "RL_DownBTN DOWN!!!");
-                        Target = RL;
-                        status = down;
+                        if(status == release) {
+                            Log.d(TAG, "RL_DownBTN DOWN!!!");
+                            RL_DownBTN.setImageDrawable(downBTN_Enable);
+                            Target = RL;
+                            status = down;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        RL_DownBTN.setImageDrawable(downBTN_Disable);
                         status = stop;
                         break;
                 }
@@ -221,17 +256,20 @@ public class SingleFragment extends Fragment {
         RR_UpBTN.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()){
+                switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "RR_UpBTN DOWN!!!");
-                        Target = RR;
-                        status = up;
+                        if(status == release) {
+                            Log.d(TAG, "RR_UpBTN DOWN!!!");
+                            RR_UpBTN.setImageDrawable(upBTN_Enable);
+                            Target = RR;
+                            status = up;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        RR_UpBTN.setImageDrawable(upBTN_Disable);
                         status = stop;
                         break;
                 }
-
                 return false;
             }
         });
@@ -241,11 +279,15 @@ public class SingleFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "RR_DownBTN DOWN!!!");
-                        Target = RR;
-                        status = down;
+                        if(status == release) {
+                            Log.d(TAG, "RR_DownBTN DOWN!!!");
+                            RR_DownBTN.setImageDrawable(downBTN_Enable);
+                            Target = RR;
+                            status = down;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        RR_DownBTN.setImageDrawable(downBTN_Disable);
                         status = stop;
                         break;
                 }

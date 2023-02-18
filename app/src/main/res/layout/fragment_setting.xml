@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@null"
     tools:context=".fragments.SettingFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@null">
 
         <TextView
             android:id="@+id/notice"
@@ -16,9 +18,10 @@
             android:layout_height="108dp"
             android:fontFamily="@font/notosanskr_medium"
             android:gravity="center"
+            android:padding="16dp"
             android:singleLine="false"
-            android:text="Please click read button first."
-            android:textColor="#000000"
+            android:text="Please click Read button first."
+            android:textColor="#FFFFFF"
             app:autoSizeMaxTextSize="108dp"
             app:autoSizeMinTextSize="24dp"
             app:autoSizeStepGranularity="2dp"
@@ -42,47 +45,38 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_height="64dp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
             <Button
                 android:id="@+id/readBTN"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/notosanskr_medium"
                 android:text="READ"
                 android:textColor="#FFFFFF"
                 app:rippleColor="#346E9E" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
             <Button
                 android:id="@+id/writeBTN"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
                 android:enabled="false"
                 android:fontFamily="@font/notosanskr_medium"
                 android:text="WRITE"
                 android:textColor="#FFFFFF"
                 app:rippleColor="#346E9E" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

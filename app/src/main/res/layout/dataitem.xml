@@ -11,7 +11,7 @@
         android:layout_gravity="center"
         android:layout_margin="8dp"
         app:cardBackgroundColor="#E3E3E3"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="6dp"
         app:cardElevation="1dp">
 
         <LinearLayout
@@ -20,15 +20,14 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/Data_upBTN"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:background="@android:drawable/ic_media_play"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:rotation="270"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/value_upbutton_1"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <View
@@ -55,6 +54,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:includeFontPadding="false"
                     android:text="미세먼지"
                     android:textAlignment="center"
                     android:textColor="#80000000"
@@ -96,15 +97,14 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/Data_downBTN"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:background="@android:drawable/ic_media_play"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:rotation="90"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="2dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/value_downbutton_1"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>

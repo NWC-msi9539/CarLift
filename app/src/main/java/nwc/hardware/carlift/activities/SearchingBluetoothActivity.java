@@ -206,7 +206,7 @@ public class SearchingBluetoothActivity extends AppCompatActivity {
                                                     }
                                                 });
 
-                                                bluetoothGeneralTool.connect(device, SearchingBluetoothActivity.this);
+                                                bluetoothGeneralTool.connect(device, SearchingBluetoothActivity.this, false);
                                             }
 
                                         }

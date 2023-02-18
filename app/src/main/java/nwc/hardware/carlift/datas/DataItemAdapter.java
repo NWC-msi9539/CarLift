@@ -1,10 +1,13 @@
 package nwc.hardware.carlift.datas;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,9 +23,20 @@ public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.MyView
     private List<Data> items;
     private Context mContext;
 
+    private Drawable downBTN_Enable;
+    private Drawable downBTN_Disable;
+    private Drawable upBTN_Enable;
+    private Drawable upBTN_Disable;
+
     public DataItemAdapter(List<Data> items, Context mContext){
         this.items = items;
         this.mContext = mContext;
+
+        upBTN_Enable = mContext.getDrawable(R.drawable.value_upbutton_2);
+        upBTN_Disable = mContext.getDrawable(R.drawable.value_upbutton_1);
+        downBTN_Enable = mContext.getDrawable(R.drawable.value_downbutton_2);
+        downBTN_Disable = mContext.getDrawable(R.drawable.value_downbutton_1);
+
     }
 
    @NonNull
@@ -37,24 +51,41 @@ public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Data data = items.get(position);
 
-        holder.upBTN.setOnClickListener(new View.OnClickListener() {
+        holder.upBTN.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                if(data.getValue() != data.getMaxValue()){
-                    data.setValue(data.getValue() + data.getStepValue());
-                    SetValueText(data.getType(), holder.values, data.getValue());
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    holder.upBTN.setImageDrawable(upBTN_Enable);
+                    if(data.getValue() != data.getMaxValue()){
+                        data.setValue(data.getValue() + data.getStepValue());
+                        SetValueText(data.getType(), holder.values, data.getValue());
+                    }
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                    holder.upBTN.setImageDrawable(upBTN_Disable);
+                }else if(event.getAction() == MotionEvent.ACTION_CANCEL){
+                    holder.upBTN.setImageDrawable(upBTN_Disable);
                 }
+                return false;
             }
         });
         holder.title.setText(data.getTypetoString(data.getType()));
         SetValueText(data.getType(), holder.values, data.getValue());
-        holder.downBTN.setOnClickListener(new View.OnClickListener() {
+        holder.downBTN.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                if(data.getValue() != data.getMinValue()){
-                    data.setValue(data.getValue() - data.getStepValue());
-                    SetValueText(data.getType(), holder.values, data.getValue());
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    holder.downBTN.setImageDrawable(downBTN_Enable);
+                    if(data.getValue() != data.getMinValue()){
+                        data.setValue(data.getValue() - data.getStepValue());
+                        SetValueText(data.getType(), holder.values, data.getValue());
+                    }
+
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                    holder.downBTN.setImageDrawable(downBTN_Disable);
+                }else if(event.getAction() == MotionEvent.ACTION_CANCEL){
+                    holder.downBTN.setImageDrawable(downBTN_Disable);
                 }
+                return false;
             }
         });
     }
@@ -179,15 +210,17 @@ public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView title;
         public TextView values;
-        public Button upBTN;
-        public Button downBTN;
+        public ImageButton upBTN;
+        public ImageButton downBTN;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
             upBTN = itemView.findViewById(R.id.Data_upBTN);
             title = itemView.findViewById(R.id.Data_TypeTXT);
             values = itemView.findViewById(R.id.Data_valuesTXT);
             downBTN = itemView.findViewById(R.id.Data_downBTN);
+
         }
     }
 }

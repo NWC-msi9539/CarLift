@@ -2,6 +2,7 @@ package nwc.hardware.carlift.fragments;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,10 +27,10 @@ import nwc.hardware.carlift.activities.HomeActivity;
 
 public class AutoFragment extends Fragment {
 
-    private Button service_BTN;
-    private Button wheel_BTN;
-    private Button bottom_BTN;
-    private Button spoiler_BTN;
+    private ImageButton service_BTN;
+    private ImageButton wheel_BTN;
+    private ImageButton bottom_BTN;
+    private ImageButton spoiler_BTN;
 
     private BluetoothGeneralTool bluetoothGeneralTool;
 
@@ -51,11 +53,29 @@ public class AutoFragment extends Fragment {
     private Timer timer;
     private TimerTask timerTask;
 
+    private Drawable service_position_Enable;
+    private Drawable service_position_Disable;
+    private Drawable wheel_postion_Enable;
+    private Drawable wheel_postion_Disable;
+    private Drawable bottom_position_Enable;
+    private Drawable bottom_position_Disable;
+    private Drawable spoiler_Enable;
+    private Drawable spoiler_Disable;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_auto, container, false);
+
+        service_position_Enable = getContext().getDrawable(R.drawable.auto_2);
+        service_position_Disable = getContext().getDrawable(R.drawable.auto_1);
+        wheel_postion_Enable = getContext().getDrawable(R.drawable.auto_wheel_2);
+        wheel_postion_Disable = getContext().getDrawable(R.drawable.auto_wheel_1);
+        bottom_position_Enable = getContext().getDrawable(R.drawable.auto_bottom_2);
+        bottom_position_Disable = getContext().getDrawable(R.drawable.auto_bottom_1);
+        spoiler_Enable = getContext().getDrawable(R.drawable.auto_spoiler_2);
+        spoiler_Disable = getContext().getDrawable(R.drawable.auto_spoiler_1);
 
         bluetoothGeneralTool = BluetoothGeneralTool.getInstance(new OnGattListener() {
             @Override
@@ -121,9 +141,13 @@ public class AutoFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        type = SERVICE_POSITION;
+                        if(type == RELEASE){
+                            service_BTN.setImageDrawable(service_position_Enable);
+                            type = SERVICE_POSITION;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        service_BTN.setImageDrawable(service_position_Disable);
                         type = STOP;
                         break;
                 }
@@ -138,9 +162,13 @@ public class AutoFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        type = WHEEL_POSITION;
+                        if(type == RELEASE){
+                            wheel_BTN.setImageDrawable(wheel_postion_Enable);
+                            type = WHEEL_POSITION;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        wheel_BTN.setImageDrawable(wheel_postion_Disable);
                         type = STOP;
                         break;
                 }
@@ -155,9 +183,13 @@ public class AutoFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        type = BOTTOM_POSITION;
+                        if(type == RELEASE){
+                            bottom_BTN.setImageDrawable(bottom_position_Enable);
+                            type = BOTTOM_POSITION;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        bottom_BTN.setImageDrawable(bottom_position_Disable);
                         type = STOP;
                         break;
                 }
@@ -172,9 +204,13 @@ public class AutoFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
-                        type = SPOILER;
+                        if(type == RELEASE) {
+                            spoiler_BTN.setImageDrawable(spoiler_Enable);
+                            type = SPOILER;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
+                        spoiler_BTN.setImageDrawable(spoiler_Disable);
                         type = STOP;
                         break;
                 }
@@ -212,7 +248,7 @@ public class AutoFragment extends Fragment {
             }
         };
 
-        timer.schedule(timerTask, 0, 200);
+        timer.schedule(timerTask, 0, 100);
     }
 
     @Override
