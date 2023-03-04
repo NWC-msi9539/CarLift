@@ -136,7 +136,8 @@
                             android:text="18.0"
                             android:textAlignment="center"
                             android:textColor="#000000"
-                            android:textSize="24sp" />
+                            android:textSize="16sp"
+                            app:autoSizeTextType="none" />
 
                         <TextView
                             android:id="@+id/FL_lock"
@@ -145,7 +146,7 @@
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -267,7 +268,7 @@
                             android:text="18.0"
                             android:textAlignment="center"
                             android:textColor="#000000"
-                            android:textSize="24sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/RL_lock"
@@ -276,7 +277,7 @@
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -457,21 +458,19 @@
                             android:id="@+id/FR_sensor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:text="18.0"
                             android:textAlignment="center"
                             android:textColor="#000000"
-                            android:textSize="24sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/FR_lock"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -582,7 +581,6 @@
                             android:layout_marginTop="2dp"
                             android:layout_marginEnd="4dp"
                             android:layout_marginBottom="2dp"
-                            android:layout_weight="1"
                             android:background="?android:attr/listDivider" />
 
                         <TextView
@@ -593,7 +591,7 @@
                             android:text="18.0"
                             android:textAlignment="center"
                             android:textColor="#000000"
-                            android:textSize="24sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/RR_lock"
@@ -602,7 +600,7 @@
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
